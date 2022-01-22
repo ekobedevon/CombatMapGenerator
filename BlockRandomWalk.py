@@ -140,13 +140,30 @@ def makeDoors(base_array:list[list]):
     doors = []
     
     temp_list = []
-    for x in range(len(base_array)):
+    #for each column except for the first and last, as thehy cannot have doors
+    for x in range(1,len(base_array)-1): # for each Column check all the way down except outer walls
+        for y in range(len(base_array[0])):
+            if base_array[x][y] == 2 and  base_array[x-1][y] == 4 and base_array[x+1][y] == 4: # if there is a wall with two empty spots on either side
+                    temp_list.append([x,y])
+            elif len(temp_list) > 0:
+                doors.append(temp_list)
+                temp_list=[]
+                
+    for y in range(1,len(base_array[0])-1): # for each row check all the way down except outer walls
+        for x in range(len(base_array)):
+            if base_array[x][y] == 2 and  base_array[x][y-1] == 4 and base_array[x][y+1] == 4: # if there is a wall with two empty spots on either side
+                    temp_list.append([x,y])
+            elif len(temp_list) > 0:
+                doors.append(temp_list)
+                temp_list=[]
+    
+    """for x in range(len(base_array)): # checking
         for y in range(len(base_array[0])):
             if base_array[x][y] == 2: #if it is a door in this row
                 temp_list.append([x,y])
             elif len(temp_list) > 2: #if the list is less than 2 than no doors, secret room
                 doors.append(temp_list)
-                temp_list= []
+                temp_list= []"""
                 
     return doors
                 
