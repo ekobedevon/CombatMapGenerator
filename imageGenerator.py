@@ -9,11 +9,11 @@ def createDungeonPicture(ppi:int = 50,map_array = None):
     pixels = img.load() # create the pixel map 
     for index_x, x in enumerate(map_array):
         for index_y,y in enumerate(x):
-            if y==1 or y == 2:
+            if y in [1,2,3]:
                 for x_pixel in range(ppi):
                     for y_pixel in range(ppi):
                         pixels[index_x*ppi + x_pixel,index_y*ppi +y_pixel] = (112, 112, 112) # wall grey
-            if y==3:
+            if y==4:
                 for x_pixel in range(ppi):
                     for y_pixel in range(ppi):
                         pixels[index_x*ppi + x_pixel,index_y*ppi +y_pixel] = (255,255,255) # white
