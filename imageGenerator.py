@@ -37,3 +37,6 @@ def createDungeonPicture(ppi:int = 50,map_array = None):
         current_spot += ppi
 
     img.show()
+    
+    
+

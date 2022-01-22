@@ -155,17 +155,13 @@ def makeDoors(base_array:list[list]):
                     temp_list.append([x,y])
             elif len(temp_list) > 0:
                 doors.append(temp_list)
-                temp_list=[]
-    
-    """for x in range(len(base_array)): # checking
-        for y in range(len(base_array[0])):
-            if base_array[x][y] == 2: #if it is a door in this row
-                temp_list.append([x,y])
-            elif len(temp_list) > 2: #if the list is less than 2 than no doors, secret room
-                doors.append(temp_list)
-                temp_list= []"""
+                temp_list=[]     
+        
+        
                 
     return doors
+
+
                 
                 
     
@@ -204,3 +200,43 @@ def Generate(room_amount:int,min_length:int,max_length:int):
         new_map[coordinate[0]][coordinate[1]] = 5
 
     return new_map
+
+
+
+def makeSymetric(base_map:list[list],sym_type:int):
+    match(sym_type):
+        case 1: # across the x axis
+            end_point = len(base_map[0]) -1 #the index of the last column
+            start_point = 0
+            while start_point < end_point:
+                for x in range(len(base_map)):
+                    base_map[x][end_point] = base_map[x][start_point] 
+                start_point += 1
+                end_point -= 1
+        case 2: # across the y axis
+            end_point = len(base_map)-1 #the index of the last column
+            start_point = 0
+            while start_point < end_point:
+                for x in range(len(base_map[0])):
+                    base_map[end_point][x] = base_map[start_point][x] 
+                start_point += 1
+                end_point -= 1
+        case 3:
+            end_point = len(base_map[0]) -1 #the index of the last column
+            start_point = 0
+            while start_point < end_point:
+                for x in range(len(base_map)):
+                    base_map[x][end_point] = base_map[x][start_point] 
+                start_point += 1
+                end_point -= 1
+            end_point = len(base_map)-1 #the index of the last column
+            start_point = 0
+            while start_point < end_point:
+                for x in range(len(base_map[0])):
+                    base_map[end_point][x] = base_map[start_point][x] 
+                start_point += 1
+                end_point -= 1
+            
+    return base_map
+            
+        
