@@ -36,8 +36,6 @@ def createDungeonPicture(ppi:int = 50,map_array = None):
                 pixels[y,current_spot-x] = (0,0,0)
         current_spot += ppi
 
-    #img.show()
-    img.save("test.png")
     return img
     
     
